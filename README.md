@@ -1,4 +1,4 @@
-About jPulse:
+### About jPulse:
 
 jPulse is a jQuery plugin, to add «pulse-like» effect to an element.
 
@@ -8,7 +8,7 @@ jPulse is tested and works with jQuery 1.9.1.
 
 --------------
 
-About author:
+### About author:
 
 Author of this plugin is Davis Miculis, email for spam - mindzhulis@gmail.com.
 
