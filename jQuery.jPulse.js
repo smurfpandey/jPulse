@@ -26,6 +26,7 @@
 
     var methods = {
         init: function (options) {
+
             var settings = $.extend(defaults, options);
 
             var cColor = settings.color;
@@ -38,7 +39,7 @@
             var cVisible = "visible";
 
             intervalPulsate = setInterval(function () {
-                var zIndex = -1;
+                var zIndex = 2;
                 var elePosition = $element.position();
                 var eleHeight = $element.height();
                 var eleWidth = $element.width();
@@ -52,6 +53,19 @@
 
                 var circleDOM = $("<div style='" + circleCSS + "'></div>");
                 $element.parent().append(circleDOM);
+
+                if (zIndex > 0) {
+                    //Our pulsating div is on top
+                    //Let's propagate click event to actual element
+                    circleDOM.off('click').on('click', function (e) {
+                        var bottomEvent = new $.Event("click");
+
+                        bottomEvent.pageX = e.pageX;
+                        bottomEvent.pageY = e.pageY;
+
+                        $element.trigger(bottomEvent);
+                    });
+                }
 
                 $(circleDOM).animate({
                     opacity: 0.0,
@@ -68,6 +82,10 @@
 
         disable: function () {
             clearInterval(intervalPulsate);
+        }
+,
+        enable: function () {
+            
         }
     };
 

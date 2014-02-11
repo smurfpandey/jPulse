@@ -142,7 +142,7 @@
         jPulse is a jQuery plugin, to add «pulse-like» effect to an element. Tested with jQuery 1.9.1.
     </div>
     <div class="example">
-        <a href="http://www.twitter.com/DavisMiculis" class="twtr-link">
+        <a class="twtr-link">
             <img class="twtr-img" src="https://abs.twimg.com/a/1373572090/images/resources/twitter-bird-light-bgs.png" width="150px" height="150px" border="0" alt="TWITTER" />
         </a>
     </div>
@@ -176,15 +176,19 @@
     <script type="text/javascript">
         $(".twtr-img").jPulse({
             color: "#00ACED",
-            size: 150,
+            size: 350,
             speed: 1400,
-            interval: 440,
+            interval: 1000,
             left: 20,
             top: -20
         });
 
         $('#disablePulse').on('click', function () {
             $(".twtr-img").jPulse('disable');
+        });
+
+        $(".twtr-img").on('click', function () {
+            console.log("Click on birdy!");
         })
     </script>
 </body>
