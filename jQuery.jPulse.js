@@ -8,7 +8,8 @@
         speed: 2000,
         interval: 400,
         left: 0,
-        top: 0
+        top: 0,
+        zIndex: -1
     };
 
     var cColor;
@@ -35,11 +36,11 @@
             var cInterval = settings.interval;
             var cLeft = settings.left;
             var cTop = settings.top;
+            var zIndex = settings.zIndex;
 
             var cVisible = "visible";
 
             intervalPulsate = setInterval(function () {
-                var zIndex = 2;
                 var elePosition = $element.position();
                 var eleHeight = $element.height();
                 var eleWidth = $element.width();
