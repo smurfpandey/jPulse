@@ -10,6 +10,6 @@ jPulse is tested and works with jQuery 1.9.1.
 
 ### About author:
 
-Author of this plugin is Davis Miculis, email for spam - mindzhulis@gmail.com.
+Author of this plugin is Davis Miculis, follow on Twitter - [@DavisMiculis](https://twitter.com/DavisMiculis)
 
 Leave me some feedback and show me some of your content where have you used my plugin. :)
