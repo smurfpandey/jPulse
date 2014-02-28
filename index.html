@@ -124,14 +124,22 @@
             transition: all 0.1s;
         }
 
-            .button:hover
-            {
-                top: 3px;
-                border-bottom: solid 1px #5E2138;
-                box-shadow: 0 0 0 0 #888;
-                -moz-box-shadow: 0 0 0 0 #888;
-                -webkit-box-shadow: 0 0 0 0 #888;
-            }
+        .button.small
+        {
+            width: 140px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 18px;
+        }
+
+        .button:hover
+        {
+            top: 3px;
+            border-bottom: solid 1px #5E2138;
+            box-shadow: 0 0 0 0 #888;
+            -moz-box-shadow: 0 0 0 0 #888;
+            -webkit-box-shadow: 0 0 0 0 #888;
+        }
     </style>
 </head>
 <body>
@@ -145,9 +153,12 @@
         <a class="twtr-link">
             <img class="twtr-img" src="https://abs.twimg.com/a/1373572090/images/resources/twitter-bird-light-bgs.png" width="150px" height="150px" border="0" alt="TWITTER" />
         </a>
-    </div>
-    <div>
-        <input type="button" id="disablePulse" value="Disable" />
+	    <div class="text">
+	        Button to disable jPulse effect on element.
+	    </div>
+        <div class="button-wrap">
+            <a class="button small" id="disable-button" href="javascript:;">Disable</a>
+        </div>
     </div>
     <div class="text">
         Download plugin from the link below and include it in your website:
@@ -156,7 +167,23 @@
     </div>
     <div class="text">
         Here's an example jQuery code, how to use it:
-        <br />        
+        <br />
+		<pre>$(".twtr-img").jPulse({
+	color: "#00ACED",
+	size: 150,
+	speed: 1400,
+	interval: 440,
+	left: 20,
+	top: -20,
+	zIndex: -1
+});</pre>
+        <br/>
+        Example code for disabling the jPulse effect on click:
+        <br/>
+		<pre>$('#disable-button').on('click', function () {
+	$(".twtr-img").jPulse('enable');
+});</pre>
+
     </div>
     <div class="text">
         Links to the plugin:
@@ -173,24 +200,22 @@
     </div>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="jQuery.jPulse.js"></script>
-    <script type="text/javascript">
-        $(".twtr-img").jPulse({
-            color: "#00ACED",
-            size: 350,
-            speed: 1400,
-            interval: 1000,
-            left: 20,
-            top: -20,
-            zIndex: 2
-        });
+	<script type="text/javascript">
+	/* Add jPulse to Twitter bird logo with optional settings */
+	$(".twtr-img").jPulse({
+		color: "#00ACED",
+		size: 150,
+		speed: 1400,
+		interval: 440,
+		left: 20,
+		top: -20,
+		zIndex: -1
+	});
 
-        $('#disablePulse').on('click', function () {
-            $(".twtr-img").jPulse('disable');
-        });
-
-        $(".twtr-img").on('click', function () {
-            console.log("Click on birdy!");
-        })
+	/* Add option to disable jPulse on Twitter bird, when button is clicked */
+    $('#disable-button').on('click', function () {
+        $(".twtr-img").jPulse('enable');
+    });
     </script>
 </body>
 </html>
