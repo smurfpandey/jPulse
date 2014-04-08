@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <ul>
+        <li>
+            <a class="twtr-link">
+                <img id="blue" class="twtr-img" src="https://abs.twimg.com/a/1373572090/images/resources/twitter-bird-light-bgs.png" width="150px" height="150px" border="0" alt="TWITTER" />
+
+                <span id="disable-blue">Disable</span>
+            </a>
+        </li>
+        <li>
+            <a class="twtr-link">
+                <img id="red" class="twtr-img" src="https://abs.twimg.com/a/1373572090/images/resources/twitter-bird-light-bgs.png" width="150px" height="150px" border="0" alt="TWITTER" />
+
+                <span id="disable-red">Disable</span>
+            </a>
+        </li>
+    </ul>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jQuery.jPulse.js"></script>
+    <script type="text/javascript">
+        /* Add jPulse to Twitter bird logo with optional settings */
+        $("#blue").jPulse({
+            color: "#00ACED",
+            size: 150,
+            speed: 1400,
+            interval: 440,
+            left: 20,
+            top: -20,
+            zIndex: -1
+        });
+
+        $("#red").jPulse({
+            color: "red",
+            size: 150,
+            speed: 1400,
+            interval: 440,
+            left: 20,
+            top: -20,
+            zIndex: -1
+        });
+
+
+        /* Add option to disable jPulse on Twitter bird, when button is clicked */
+        $('#disable-red').on('click', function () {
+            $("#red").jPulse('disable');
+        });
+    </script>
+</body>
+</html>
