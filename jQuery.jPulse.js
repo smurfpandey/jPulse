@@ -95,14 +95,23 @@
         }, cInterval);
     };
 
-    jPulse.prototype.disable = function () {
-        clearInterval(this.intervalPulsate);
+    jPulse.prototype.disable = function (intervalPulsate) {
+        clearInterval(intervalPulsate);
     };
 
     $.fn.jPulse = function (options) {
         return this.each(function () {
             if (!$.data(this, 'plugin_' + pluginName)) {
                 $.data(this, 'plugin_' + pluginName, new jPulse(this, options));
+            }
+            else {
+                //Already intialized
+                var thisPlugin = $.data(this, 'plugin_' + pluginName);
+                if (thisPlugin[options]) {
+                    return thisPlugin[options].apply(this, [thisPlugin.intervalPulsate]);
+                } else {
+                    $.error('Method ' + options + ' does not exist in jPulse');
+                }
             }
         });
     };
