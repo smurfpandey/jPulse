@@ -1,8 +1,7 @@
 (function ($) {
 
-    var intervalPulsate;
-    var $element;
-    var defaults = {
+    var pluginName = 'jPulse',
+    defaults = {
         color: "#993175",
         size: 120,
         speed: 2000,
@@ -21,85 +20,99 @@
     var zIndex;
     var cVisible;
 
-    var pulsateElement = function (o) {
+    // The actual plugin constructor
+    function jPulse(element, options) {
+        this.element = $(element);
 
-    };
+        // jQuery has an extend method that merges the 
+        // contents of two or more objects, storing the 
+        // result in the first object. The first object 
+        // is generally empty because we don't want to alter 
+        // the default options for future instances of the plugin
+        this.options = $.extend({}, defaults, options);
 
-    var methods = {
-        init: function (options) {
+        this._defaults = defaults;
+        this._name = pluginName;
+        this.intervalPulsate;
 
-            var settings = $.extend(defaults, options);
+        this.init();
+    }
 
-            var cColor = settings.color;
-            var cSize = settings.size;
-            var cSpeed = settings.speed;
-            var cInterval = settings.interval;
-            var cLeft = settings.left;
-            var cTop = settings.top;
-            var zIndex = settings.zIndex;
+    jPulse.prototype.init = function () {
+        // Place initialization logic here
+        // You already have access to the DOM element and
+        // the options via the instance, e.g. this.element 
+        // and this.options
+        var cColor = this.options.color;
+        var cSize = this.options.size;
+        var cSpeed = this.options.speed;
+        var cInterval = this.options.interval;
+        var cLeft = this.options.left;
+        var cTop = this.options.top;
+        var zIndex = this.options.zIndex;
 
-            var cVisible = "visible";
+        var cVisible = "visible";
+        var $element = this.element;
 
-            intervalPulsate = setInterval(function () {
-                var elePosition = $element.position();
-                var eleHeight = $element.height();
-                var eleWidth = $element.width();
-                var circleCSS = "position:absolute;top:"
-                    + (elePosition.top + (eleHeight / 2) + cTop)
-                    + "px;left:" + (elePosition.left + (eleWidth / 2) + cLeft)
-                    + "px;width:0px;height:0px;background:"
-                    + cColor + ";z-index:"
-                    + zIndex
-                    + ";-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;";
+        this.intervalPulsate = setInterval(function () {
+            var elePosition = $element.position();
+            var eleHeight = $element.height();
+            var eleWidth = $element.width();
+            var circleCSS = "position:absolute;top:"
+                + (elePosition.top + (eleHeight / 2) + cTop)
+                + "px;left:" + (elePosition.left + (eleWidth / 2) + cLeft)
+                + "px;width:0px;height:0px;background:"
+                + cColor + ";z-index:"
+                + zIndex
+                + ";-webkit-border-radius:1px;-moz-border-radius:1px;border-radius:1px;";
 
-                var circleDOM = $("<div style='" + circleCSS + "'></div>");
-                $element.parent().append(circleDOM);
+            var circleDOM = $("<div style='" + circleCSS + "'></div>");
+            $element.parent().append(circleDOM);
 
-                if (zIndex > 0) {
-                    //Our pulsating div is on top
-                    //Let's propagate click event to actual element
-                    circleDOM.off('click').on('click', function (e) {
-                        var bottomEvent = new $.Event("click");
+            if (zIndex > 0) {
+                //Our pulsating div is on top
+                //Let's propagate click event to actual element
+                circleDOM.off('click').on('click', function (e) {
+                    var bottomEvent = new $.Event("click");
 
-                        bottomEvent.pageX = e.pageX;
-                        bottomEvent.pageY = e.pageY;
+                    bottomEvent.pageX = e.pageX;
+                    bottomEvent.pageY = e.pageY;
 
-                        $element.trigger(bottomEvent);
-                    });
-                }
-
-                $(circleDOM).animate({
-                    opacity: 0.0,
-                    top: '-=' + (cSize / 2) + '',
-                    left: '-=' + (cSize / 2) + '',
-                    width: '+=' + cSize + '',
-                    height: '+=' + cSize + '',
-                    borderRadius: '+=' + (cSize / 2) + ''
-                }, cSpeed, 'swing', function () {
-                    $(this).remove();
+                    $element.trigger(bottomEvent);
                 });
-            }, cInterval);
-        },
+            }
 
-        disable: function () {
-            clearInterval(intervalPulsate);
-        }
-,
-        enable: function () {
-            
-        }
+            $(circleDOM).animate({
+                opacity: 0.0,
+                top: '-=' + (cSize / 2) + '',
+                left: '-=' + (cSize / 2) + '',
+                width: '+=' + cSize + '',
+                height: '+=' + cSize + '',
+                borderRadius: '+=' + (cSize / 2) + ''
+            }, cSpeed, 'swing', function () {
+                $(this).remove();
+            });
+        }, cInterval);
     };
 
-    $.fn.jPulse = function (methodOrOptions) {
-        $element = $(this);
+    jPulse.prototype.disable = function (intervalPulsate) {
+        clearInterval(intervalPulsate);
+    };
 
-        if (methods[methodOrOptions]) {
-            return methods[methodOrOptions].apply(this, Array.prototype.slice.call(arguments, 1));
-        } else if (typeof methodOrOptions === 'object' || !methodOrOptions) {
-            // Default to "init"
-            return methods.init.apply(this, arguments);
-        } else {
-            $.error('Method ' + methodOrOptions + ' does not exist in jPulse');
-        }
+    $.fn.jPulse = function (options) {
+        return this.each(function () {
+            if (!$.data(this, 'plugin_' + pluginName)) {
+                $.data(this, 'plugin_' + pluginName, new jPulse(this, options));
+            }
+            else {
+                //Already intialized
+                var thisPlugin = $.data(this, 'plugin_' + pluginName);
+                if (thisPlugin[options]) {
+                    return thisPlugin[options].apply(this, [thisPlugin.intervalPulsate]);
+                } else {
+                    $.error('Method ' + options + ' does not exist in jPulse');
+                }
+            }
+        });
     };
 }(jQuery));
