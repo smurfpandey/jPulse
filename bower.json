@@ -1,9 +1,9 @@
 {
-  "name": "jPulse-alt",
-  "version": "0.1.0",
-  "homepage": "https://github.com/opichon/jPulse",
+  "name": "jPulse",
+  "version": "0.1.1",
+  "homepage": "https://github.com/DavisMiculis/jPulse",
   "authors": [
-    "David Miculis (https://github.com/DavisMiculis/jPulse)"
+    "Davis Miculis (https://github.com/DavisMiculis/jPulse)"
   ],
   "description": "Adds a pulsating effect to an element",
   "main": [
