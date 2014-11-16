@@ -12,14 +12,17 @@
             <a class="twtr-link">
                 <img id="blue" class="twtr-img" src="https://abs.twimg.com/a/1373572090/images/resources/twitter-bird-light-bgs.png" width="150px" height="150px" border="0" alt="TWITTER" />
 
-                <span id="disable-blue">Disable</span>
+                <span id="disable-blue">Disable blue</span>
+                <span id="enable-blue">Enable blue</span>
             </a>
         </li>
         <li>
             <a class="twtr-link">
                 <img id="red" class="twtr-img" src="https://abs.twimg.com/a/1373572090/images/resources/twitter-bird-light-bgs.png" width="150px" height="150px" border="0" alt="TWITTER" />
 
-                <span id="disable-red">Disable</span>
+                <span id="disable-red">Disable red</span>
+                <span id="enable-red">Enable red</span>
+                <span id="enable-green">Enable green</span>
             </a>
         </li>
     </ul>
@@ -28,6 +31,7 @@
     <script type="text/javascript" src="jQuery.jPulse.js"></script>
     <script type="text/javascript">
         /* Add jPulse to Twitter bird logo with optional settings */
+
         $("#blue").jPulse({
             color: "#00ACED",
             size: 150,
@@ -52,10 +56,39 @@
         /* Add option to disable jPulse on Twitter bird, when button is clicked */
         $('#disable-red').on('click', function () {
             $("#red").jPulse('disable');
+            console.log( $( "#red" ).data() );
+        });
+
+        $('#enable-red').on('click', function () {
+            $("#red").jPulse({
+                color: "red",
+                size: 150,
+                speed: 1400,
+                interval: 440,
+                left: 20,
+                top: -20,
+                zIndex: -1
+            });
+        });
+
+        $('#enable-green').on('click', function () {
+            $("#red").jPulse({
+                color: "green",
+                size: 150,
+                speed: 1400,
+                interval: 440,
+                left: 20,
+                top: -20,
+                zIndex: -1
+            });
         });
 
         $('#disable-blue').on('click', function () {
             $("#blue").jPulse('disable');
+        });
+
+        $('#enable-blue').on('click', function () {
+            $("#blue").jPulse();
         });
     </script>
 </body>

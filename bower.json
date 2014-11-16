@@ -1,0 +1,22 @@
+{
+  "name": "jPulse-alt",
+  "version": "0.1.0",
+  "homepage": "https://github.com/opichon/jPulse",
+  "authors": [
+    "David Miculis (https://github.com/DavisMiculis/jPulse)"
+  ],
+  "description": "Adds a pulsating effect to an element",
+  "main": [
+    "jQuery.jPulse.js",
+    "jQuery.jPulse.min.js",
+    "jQuery.jPulse.min.js.map"
+  ],
+  "license": "None",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
