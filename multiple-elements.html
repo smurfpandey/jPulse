@@ -34,14 +34,15 @@
 
         $("#blue").jPulse({
             color: "#00ACED",
-            size: 150,
-            speed: 1400,
-            interval: 440,
+            size: 100,
+            speed: 1000,
+            interval: 1500,
             left: 20,
             top: -20,
             zIndex: -1
         });
 
+/*
         $("#red").jPulse({
             color: "red",
             size: 150,
@@ -51,12 +52,11 @@
             top: -20,
             zIndex: -1
         });
-
+*/
 
         /* Add option to disable jPulse on Twitter bird, when button is clicked */
         $('#disable-red').on('click', function () {
             $("#red").jPulse('disable');
-            console.log( $( "#red" ).data() );
         });
 
         $('#enable-red').on('click', function () {
