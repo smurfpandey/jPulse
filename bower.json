@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "homepage": "https://github.com/DavisMiculis/jPulse",
   "authors": [
-    "David Miculis (https://github.com/DavisMiculis/jPulse)"
+    "Davis Miculis (https://github.com/DavisMiculis/jPulse)"
   ],
   "description": "Adds a pulsating effect to an element",
   "main": [
