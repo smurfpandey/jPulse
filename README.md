@@ -18,14 +18,14 @@ bower install --S jPulse
 
 ### Directly
 
-```html
+```
 <script src="path/to/jPulse/dist/jQuery.jPulse.min.js"></script>
 ```
 
 Usage
 -----
 
-Invoke `jPulse` on the element to which pulsating effect should be applied.
+Invoke `jPulse` on the element to which the pulsating effect should be applied.
 
 ```javascript
 $( "elt" ).jPulse( { /* options */ } );
@@ -43,9 +43,9 @@ To enable the effect (for instance, after having disabled it):
 $( "elt" ).jPulse( "enable", /* options */ } );
 ```
 
-About author
+About the author
 ------------
 
-Author of this plugin is Davis Miculis, follow on Twitter - [@DavisMiculis](https://twitter.com/DavisMiculis)
+The author of this plugin is Davis Miculis, follow on Twitter - [@DavisMiculis](https://twitter.com/DavisMiculis)
 
 Leave me some feedback and show me some of your content where have you used my plugin. :)
