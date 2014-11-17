@@ -1,11 +1,9 @@
 var gulp = require('gulp');
-var copy = require('gulp-copy');
 var uglify = require('gulp-uglifyjs');
-var rename = require('gulp-rename');
 
 gulp.task('copy', function() {
-	return gulp.src('src/*.js')
-		.pipe(copy('dist'));
+	return gulp.src('src/*.js', { base: 'src' })
+		.pipe(gulp.dest('dist'));
 });
 
 gulp.task('uglify', function() {
