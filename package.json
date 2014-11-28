@@ -1,0 +1,6 @@
+{
+	"devDependencies": {
+		"gulp": "^3.7.0",
+        "gulp-uglifyjs": "^0.5.0"
+	}
+}
