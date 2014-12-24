@@ -1,0 +1,22 @@
+{
+  "name": "jPulse",
+  "version": "0.1.2",
+  "homepage": "https://github.com/DavisMiculis/jPulse",
+  "authors": [
+    "Davis Miculis (https://github.com/DavisMiculis/jPulse)"
+  ],
+  "description": "Adds a pulsating effect to an element",
+  "main": [
+    "dist/jQuery.jPulse.js",
+    "dist/jQuery.jPulse.min.js",
+    "dist/jQuery.jPulse.min.js.map"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
